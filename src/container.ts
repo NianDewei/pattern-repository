@@ -1,7 +1,14 @@
 import { createContainer, asClass } from "awilix"
 import { TestService } from "./services/test.service"
+import { Application } from "express"
+import { scopePerRequest } from "awilix-express"
 
-export const container = createContainer()
+const container = createContainer({ injectionMode: "CLASSIC" })
+
 container.register({
-	TestService: asClass(TestService).scoped()
+	testService: asClass(TestService).scoped()
 })
+
+export const loadContainer = (app: Application) => {
+	app.use(scopePerRequest(container))
+}
