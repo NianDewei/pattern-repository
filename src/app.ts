@@ -4,7 +4,7 @@ import type { Application } from "express"
 
 import { loadControllers } from "awilix-express"
 import { loadContainer } from "./container"
-import { environmentPath } from "./utils/getEnvironment.util"
+import { environmentPath } from "./common/utils/getEnvironment.util"
 
 dotenv.config({ path: environmentPath })
 
